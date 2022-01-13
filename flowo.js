@@ -44,8 +44,8 @@ const Flowo = (function () {
             "<": (a, b) => a < b,
             ">=": (a, b) => a >= b,
             "<=": (a, b) => a <= b,
-            "=": (a, b) => a == b,
-            "!=": (a, b) => a != b,
+            "=": (a, b) => a === b,
+            "!=": (a, b) => a !== b,
             
             "in": (a, b) => b.includes(a),
             

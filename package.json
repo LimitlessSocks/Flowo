@@ -1,6 +1,6 @@
 {
   "name": "flowo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple, extensible testing language",
   "main": "flowo.js",
   "scripts": {
