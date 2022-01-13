@@ -344,14 +344,22 @@ const Flowo = (function () {
         return stack.at(-1);
     };
     
+    const exec = (string, options = {}) => {
+        let tokenStream = tokenize(string, options);
+        let shunted = shunt(tokenStream, options);
+        let evaluated = evaluate(shunted);
+        return evaluated;
+    };
+    
     return {
         TokenTypes: TokenTypes,
         tokenize,
         shunt,
         evaluate,
+        exec
     };
 })();
 
-if(typeof module !== undefined) {
+if(typeof module !== "undefined") {
     module.exports = Flowo;
 }

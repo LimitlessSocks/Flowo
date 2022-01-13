@@ -27,7 +27,7 @@ for(let s of [
     }
     console.log("Evaluated:");
     console.log(
-        Flowo.evaluate(Flowo.shunt(Flowo.tokenize(s)), {
+        Flowo.exec(s, {
             variables: { atk: 100, def: 3000 }
         })
     );
