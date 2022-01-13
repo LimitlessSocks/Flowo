@@ -347,7 +347,7 @@ const Flowo = (function () {
     const exec = (string, options = {}) => {
         let tokenStream = tokenize(string, options);
         let shunted = shunt(tokenStream, options);
-        let evaluated = evaluate(shunted);
+        let evaluated = evaluate(shunted, options);
         return evaluated;
     };
     
