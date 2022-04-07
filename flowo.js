@@ -37,6 +37,7 @@ const Flowo = (function () {
                 2: (a, b) => a - b,
             }),
             "^": (a, b) => a**b,
+            "%": (a, b) => a % b,
             ",": (a, b) => b && a,
             ";": (a, b) => b,
             
@@ -49,6 +50,11 @@ const Flowo = (function () {
             
             "in": (a, b) => b.includes(a),
             
+            "not": arityCase({
+                1: (a) => !a,
+                2: (a, b) => a && !b,
+            }),
+            // "!": same as "not", below
             "and": (a, b) => a && b,
             "&": (a, b) => a && b,
             "or": (a, b) => a || b,
@@ -63,6 +69,8 @@ const Flowo = (function () {
             "|": 10,
             "and": 15,
             "&": 15,
+            "not": 15,
+            "!": 15,
             
             "in": 20,
             "=": 20,
@@ -78,6 +86,8 @@ const Flowo = (function () {
             "*": 40,
             "/": 40,
             
+            "%": 50,
+            
             "^": 60,
         },
         rightAssociative: ["^"],
@@ -88,6 +98,7 @@ const Flowo = (function () {
         isNumberBody: (ch) => (/^[\d.]$/).test(ch),
         isStringHead: (ch) => (/^["']$/).test(ch), //TODO: string escaping
     };
+    DefaultOptions.operators["!"] = DefaultOptions.operators["not"];
     const tokenize = function* (string, options) {
         let {
             operators,
